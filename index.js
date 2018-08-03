@@ -2,7 +2,7 @@ var express = require("express"),
     app = express(),
     pg = require("pg"),
     path = require("path");
-
+var https = require('https');
 /**
  * File upload via AWS S3 / Bucketeer Addon
  * For Amazon Data Center East
@@ -51,6 +51,22 @@ app.get("/",function defaultRoute(req, res){
     });
 });
 
+app.get("/fetch",function defaultRoute(req, res){
+var options = {
+  host: 'salesforce-appcino.herokuapp.com',
+  path: '/accounts/1',
+  method: 'GET'
+};
+
+https.request(options, function(res) {
+  console.log('STATUS: ' + res.statusCode);
+  console.log('HEADERS: ' + JSON.stringify(res.headers));
+  res.setEncoding('utf8');
+  res.on('data', function (chunk) {
+    console.log('BODY: ' + chunk);
+  });
+}).end();
+});
 /*
  * Run Server
  */
