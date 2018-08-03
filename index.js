@@ -61,7 +61,7 @@ app.get('/accounts/:id', function(req, res) {
               if (!error && response.statusCode === 200) { 
                   console.log(body); 
                   var obj = JSON.parse(body);
-                  var query = "Insert into salesforce.account(name,accountnumber,billingcity)values("+obj.name+","+obj.accountnumber+","+obj.billingcity+")";
+                  var query = "Insert into salesforce.account(Name,AccountNumber,BillingCity)values('"+obj.name+"','"+obj.accountnumber+"','"+obj.billingcity+"')";
                   sharedPgClient.query(query);
                   res.redirect('/'); 
                  } 
