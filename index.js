@@ -60,7 +60,8 @@ app.get('/accounts/:id', function(req, res) {
       request.get({ url: "https://appcino-crud-app.herokuapp.com/accounts/" + req.params.id },      function(error, response, body) { 
               if (!error && response.statusCode === 200) { 
                   console.log(res.json(body)); 
-                  res.json(body);
+                  var obj = JSON.parse(res.json(body));
+                  res.json(obj.accountnumber+'-'+obj.name);
                  } 
              }); 
      }); 
