@@ -64,7 +64,7 @@ app.get('/accounts/:id', function(req, res) {
                   var obj = JSON.parse(body);
                   
                   var dt = dateTime.create();
-                  var formatted = dt.format('YYYY-mm-dd H:M:S');
+                  var formatted = dt.format('Y-m-d H:M:S');
                   console.log(formatted); 
                   var externalid="A00-"+formatted;
                   var query = "Insert into salesforce.account(name,accountnumber,billingcity,externalid__c)values('"+obj.name+"','"+obj.accountnumber+"','"+obj.billingcity+"','"+externalid+"')";//,'"+obj.billingcity+"'
