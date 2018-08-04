@@ -69,7 +69,7 @@ app.get('/accounts/:id', function(req, res) {
                   var externalid="A00-"+formatted;
                   var query = "Insert into salesforce.account(name,accountnumber,billingcity,externalid__c)values('"+obj.name+"','"+obj.accountnumber+"','"+obj.billingcity+"','"+externalid+"')";//,'"+obj.billingcity+"'
                   sharedPgClient.query(query);
-                  var querycontact="Insert into salesforce.contact(firstname,lastname,Account__externalid__c)values('"+obj.name+"','"+obj.accountnumber+"','"+externalid+"')";
+                  var querycontact="Insert into salesforce.contact(firstname,lastname,account__externalid__c)values('"+obj.name+"','"+obj.accountnumber+"','"+externalid+"')";
                   sharedPgClient.query(querycontact);
                   res.redirect('/'); 
                  } 
