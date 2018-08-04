@@ -56,10 +56,10 @@
 
               <% for(var i=0; i<connectResults.length; i++) { %>
                   <tr>
-                      <td class="text-left"><%= connectResults[i].name %></td>
-                      <td class="text-left"><%= connectResults[i].accountnumber %></td>
-                      <td class="text-left"><%= connectResults[i].billingcity %></td>
-                      <td class="text-left"><%= new Date(connectResults[i].createddate).toJSON().substring(0,10) %></td>
+                      <td class="text-left"><%= connectResults[i].FirstName %></td>
+                      <td class="text-left"><%= connectResults[i].LastName %></td>
+                      <!--<td class="text-left"><%= connectResults[i].billingcity %></td>-->
+                      <!--<td class="text-left"><%= new Date(connectResults[i].createddate).toJSON().substring(0,10) %></td>-->
                   </tr>
               <% } %>
 
