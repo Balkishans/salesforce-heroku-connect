@@ -61,8 +61,11 @@ app.get('/accounts/:id', function(req, res) {
               if (!error && response.statusCode === 200) { 
                   console.log(body); 
                   var obj = JSON.parse(body);
-                  var datetime = new Date();
-                  var externalid="A00"+datetime;
+                  var dateTime = require('node-datetime');
+                  var dt = dateTime.create();
+                  var formatted = dt.format('YYYY-mm-dd H:M:S');
+                  console.log(formatted); 
+                  var externalid="A00-"+formatted;
                   var query = "Insert into salesforce.account(name,accountnumber,billingcity,externalid__c)values('"+obj.name+"','"+obj.accountnumber+"','"+obj.billingcity+"','"+externalid+"')";//,'"+obj.billingcity+"'
                   sharedPgClient.query(query);
                   res.redirect('/'); 
