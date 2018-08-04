@@ -3,6 +3,7 @@ var express = require("express"),
     pg = require("pg"),
     path = require("path");
 var request = require('request');
+var dateTime = require('node-datetime');
 /**
  * File upload via AWS S3 / Bucketeer Addon
  * For Amazon Data Center East
@@ -61,7 +62,7 @@ app.get('/accounts/:id', function(req, res) {
               if (!error && response.statusCode === 200) { 
                   console.log(body); 
                   var obj = JSON.parse(body);
-                  var dateTime = require('node-datetime');
+                  
                   var dt = dateTime.create();
                   var formatted = dt.format('YYYY-mm-dd H:M:S');
                   console.log(formatted); 
