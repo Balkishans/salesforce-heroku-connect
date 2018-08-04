@@ -43,7 +43,7 @@ app.set("view engine", "ejs");
  * Jobs Landing Page
  */
 app.get("/",function defaultRoute(req, res){
-    var query = "SELECT * FROM salesforce.contact";
+    var query = "SELECT * FROM salesforce.account";
     var result = [];
     sharedPgClient.query(query, function(err, result){
         console.log("Jobs Query Result Count: " + result.rows.length);
@@ -61,7 +61,7 @@ app.get('/accounts/:id', function(req, res) {
               if (!error && response.statusCode === 200) { 
                   console.log(body); 
                   var obj = JSON.parse(body);
-                  var query = "Insert into salesforce.contact(firstname,lastname)values('"+obj.name+"','"+obj.accountnumber+"')";//,'"+obj.billingcity+"'
+                  var query = "Insert into salesforce.account(name,accountnumber,billingcity)values('"+obj.name+"','"+obj.accountnumber+"','"+obj.billingcity+"')";//,'"+obj.billingcity+"'
                   sharedPgClient.query(query);
                   res.redirect('/'); 
                  } 
