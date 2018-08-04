@@ -61,7 +61,9 @@ app.get('/accounts/:id', function(req, res) {
               if (!error && response.statusCode === 200) { 
                   console.log(body); 
                   var obj = JSON.parse(body);
-                  var query = "Insert into salesforce.account(name,accountnumber,billingcity)values('"+obj.name+"','"+obj.accountnumber+"','"+obj.billingcity+"')";//,'"+obj.billingcity+"'
+                  var datetime = new Date();
+                  var externalid="A00"+datetime;
+                  var query = "Insert into salesforce.account(name,accountnumber,billingcity,externalid__c)values('"+obj.name+"','"+obj.accountnumber+"','"+obj.billingcity+"','"+externalid+"')";//,'"+obj.billingcity+"'
                   sharedPgClient.query(query);
                   res.redirect('/'); 
                  } 
